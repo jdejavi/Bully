@@ -37,7 +37,7 @@ import com.google.gson.Gson;
 public class Proceso {
     Boolean recibido=false;
     Boolean coordEnviado=false;
-    Client client = ClientBuilder.newClient();
+    Client client = ClientBuilder.newClient().property(ClientProperties.CONNECT_TIMEOUT, 4000).property(ClientProperties.READ_TIMEOUT, 4000);
     Map<Integer,String> mapaIds = new ConcurrentHashMap<Integer,String>();
     Integer id;
     Integer coordinadorActual;
