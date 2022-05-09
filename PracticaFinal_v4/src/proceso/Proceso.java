@@ -131,7 +131,9 @@ public class Proceso {
     @Path("coordinadorSet")
     
     public String coordinadorSeteado(String idCoordNuevo) {
-        if(estaEncendido){
+        if(!estaEncendido){
+		    this.coordinadorActual=0;
+	    }else{
             this.coordinadorActual = Integer.parseInt(idCoordNuevo);
 
             this.estadoEleccion="Acuerdo";
