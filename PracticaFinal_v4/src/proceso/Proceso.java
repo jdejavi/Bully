@@ -163,10 +163,11 @@ public class Proceso {
             for(Map.Entry<Integer, String> entry : mapaIds.entrySet()) {
                 URI uri = UriBuilder.fromUri("http://"+entry.getValue()+"/PracticaFinal_v4").build();
                 WebTarget target = client.target(uri);
-        
-                Response res = target.path("rest").path("proceso").path("coordinadorSet")
-                        .request("text/plain")
-                        .post(Entity.text(""+id));
+        	try{
+			Response res = target.path("rest").path("proceso").path("coordinadorSet")
+				.request("text/plain")
+				.post(Entity.text(""+id));
+		}catch(Exception e){}
                 
             }
         }else {
