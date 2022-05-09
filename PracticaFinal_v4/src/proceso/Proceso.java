@@ -131,11 +131,12 @@ public class Proceso {
     @Path("coordinadorSet")
     
     public String coordinadorSeteado(String idCoordNuevo) {
-        
-        this.coordinadorActual = Integer.parseInt(idCoordNuevo);
-        
-        this.estadoEleccion="Acuerdo";
-        this.tenemosCoordinador=true;
+        if(estaEncendido){
+            this.coordinadorActual = Integer.parseInt(idCoordNuevo);
+
+            this.estadoEleccion="Acuerdo";
+            this.tenemosCoordinador=true;
+        }
         return "OK del coordinador mayor seteado";
     }
     
