@@ -97,7 +97,6 @@ public class Proceso {
                 }
                 
             }else {
-		contador++;
                 try {
                     Thread.sleep(new Random().nextInt(500)+500);
                     if(estaEncendido) {
