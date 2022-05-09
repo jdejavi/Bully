@@ -46,7 +46,7 @@ public class Proceso {
     Boolean estaEncendido;
     Semaphore encendidoSemaphore = new Semaphore(1);
     Boolean tenemosCoordinador = false;
-    Integer contador=0;
+    
     @POST
     @Consumes(MediaType.TEXT_PLAIN)
     @Path("init2")
@@ -321,7 +321,7 @@ public class Proceso {
         else state = "Apagado";
         return "  ||     " + id + "     |"
         	 + "|      " + coordinadorActual + "      |"
-        	 + "|        " + estadoEleccion +" "+ contador + "       |"
+        	 + "|        " + estadoEleccion +"       |"
         	 + "|    " + state + "     ";
         	 
     }
