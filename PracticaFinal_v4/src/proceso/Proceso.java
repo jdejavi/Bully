@@ -46,7 +46,7 @@ public class Proceso {
     Boolean estaEncendido;
     Semaphore encendidoSemaphore = new Semaphore(1);
     Boolean tenemosCoordinador = false;
-    
+    Integer contador=0;
     @POST
     @Consumes(MediaType.TEXT_PLAIN)
     @Path("init2")
@@ -97,6 +97,7 @@ public class Proceso {
                 }
                 
             }else {
+		contador++;
                 try {
                     Thread.sleep(new Random().nextInt(500)+500);
                     if(estaEncendido) {
@@ -319,7 +320,7 @@ public class Proceso {
         else state = "Apagado";
         return "  ||     " + id + "     |"
         	 + "|      " + coordinadorActual + "      |"
-        	 + "|        " + estadoEleccion + "       |"
+        	 + "|        " + estadoEleccion +" "+ contador + "       |"
         	 + "|    " + state + "     ";
         	 
     }
