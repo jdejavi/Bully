@@ -83,7 +83,7 @@ public class Proceso {
         
         while(true) {
             
-            System.out.printf("El id es -> "+id+ " El coordinador actual es -> "+coordinadorActual+"\n");
+            System.out.printf("El id es -> "+id+ " El coordinador actual es -> "+coordinadorActual+"y el contador es ->"+contador+"\n");
             if(!estaEncendido) {
                 
                 //Bloquear
