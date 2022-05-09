@@ -25,7 +25,7 @@ then
 	elif [ "$1" -eq "2" ]
 	then
 		echo "[!] Copiando el directorio [$fichero] en el directorio es [$directorio] del host [$host]"
-		scp -r $fichero $host:/home/i3840766/Escritorio/$directorio &>/dev/null
+		scp -r $fichero $host:$directorio &>/dev/null
 		if [ $? -eq 0 ]
 		then	
 			echo "[!] Directorio [$fichero] copiado satisfactoriamente en [$host]"
