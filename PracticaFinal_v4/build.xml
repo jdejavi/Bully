@@ -1,0 +1,187 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!-- WARNING: Eclipse auto-generated file.
+              Any modifications will be overwritten.
+              To include a user specific buildfile here, simply create one in the same
+              directory with the processing instruction <?eclipse.ant.import?>
+              as the first entry and export the buildfile again. --><project basedir="." default="build" name="PracticaFinal_v4">
+    <property environment="env"/>
+    <property name="ECLIPSE_HOME" value="../../../../opt/eclipse/"/>
+    <property name="debuglevel" value="source,lines,vars"/>
+    <property name="target" value="1.8"/>
+    <property name="source" value="1.8"/>
+    <property name="dir.buildfile" value="."/>
+    <property name="dir.jarfile" value="${dir.buildfile}"/>
+    <property name="lib.dir" location="WebContent/WEB-INF/lib" />
+   
+    <path id="Server Library [Apache Tomcat v9.0] (unbound).libraryclasspath"/>
+    <path id="Web App Libraries.libraryclasspath">
+        <pathelement location="WebContent/WEB-INF/lib/aopalliance-repackaged-2.6.1.jar"/>
+        <pathelement location="WebContent/WEB-INF/lib/gson-2.9.0.jar"/>
+        <pathelement location="WebContent/WEB-INF/lib/hk2-api-2.6.1.jar"/>
+        <pathelement location="WebContent/WEB-INF/lib/hk2-locator-2.6.1.jar"/>
+        <pathelement location="WebContent/WEB-INF/lib/hk2-utils-2.6.1.jar"/>
+        <pathelement location="WebContent/WEB-INF/lib/jakarta.activation-api-1.2.2.jar"/>
+        <pathelement location="WebContent/WEB-INF/lib/jakarta.annotation-api-1.3.5.jar"/>
+        <pathelement location="WebContent/WEB-INF/lib/jakarta.inject-2.6.1.jar"/>
+        <pathelement location="WebContent/WEB-INF/lib/jakarta.json-1.1.6-module.jar"/>
+        <pathelement location="WebContent/WEB-INF/lib/jakarta.json-1.1.6.jar"/>
+        <pathelement location="WebContent/WEB-INF/lib/jakarta.json-api-1.1.6.jar"/>
+        <pathelement location="WebContent/WEB-INF/lib/jakarta.json.bind-api-1.0.2.jar"/>
+        <pathelement location="WebContent/WEB-INF/lib/jakarta.persistence-api-2.2.3.jar"/>
+        <pathelement location="WebContent/WEB-INF/lib/jakarta.servlet-api-4.0.3.jar"/>
+        <pathelement location="WebContent/WEB-INF/lib/jakarta.validation-api-2.0.2.jar"/>
+        <pathelement location="WebContent/WEB-INF/lib/jakarta.ws.rs-api-2.1.6-sources.jar"/>
+        <pathelement location="WebContent/WEB-INF/lib/jakarta.ws.rs-api-2.1.6.jar"/>
+        <pathelement location="WebContent/WEB-INF/lib/jakarta.xml.bind-api-2.3.3.jar"/>
+        <pathelement location="WebContent/WEB-INF/lib/javassist-3.25.0-GA.jar"/>
+        <pathelement location="WebContent/WEB-INF/lib/jersey-client.jar"/>
+        <pathelement location="WebContent/WEB-INF/lib/jersey-common.jar"/>
+        <pathelement location="WebContent/WEB-INF/lib/jersey-container-servlet-core.jar"/>
+        <pathelement location="WebContent/WEB-INF/lib/jersey-container-servlet.jar"/>
+        <pathelement location="WebContent/WEB-INF/lib/jersey-hk2.jar"/>
+        <pathelement location="WebContent/WEB-INF/lib/jersey-media-jaxb.jar"/>
+        <pathelement location="WebContent/WEB-INF/lib/jersey-media-json-binding.jar"/>
+        <pathelement location="WebContent/WEB-INF/lib/jersey-media-sse.jar"/>
+        <pathelement location="WebContent/WEB-INF/lib/jersey-server.jar"/>
+        <pathelement location="WebContent/WEB-INF/lib/org.osgi.core-6.0.0.jar"/>
+        <pathelement location="WebContent/WEB-INF/lib/osgi-resource-locator-1.0.3.jar"/>
+        <pathelement location="WebContent/WEB-INF/lib/yasson-1.0.9.jar"/>
+    </path>
+    <path id="EAR Libraries.libraryclasspath"/>
+    <path id="PracticaFinal_v4.classpath">
+        <pathelement location="build/classes"/>
+        <path refid="Server Library [Apache Tomcat v9.0] (unbound).libraryclasspath"/>
+        <path refid="Web App Libraries.libraryclasspath"/>
+        <path refid="EAR Libraries.libraryclasspath"/>
+    </path>
+    <target name="init">
+        <mkdir dir="build/classes"/>
+        <copy includeemptydirs="false" todir="build/classes">
+            <fileset dir="src">
+                <exclude name="**/*.launch"/>
+                <exclude name="**/*.java"/>
+            </fileset>
+        </copy>
+    </target>
+    <target name="clean">
+        <delete dir="build/classes"/>
+    </target>
+    <target depends="clean" name="cleanall"/>
+    <target depends="build-subprojects,build-project" name="build"/>
+    <target name="build-subprojects"/>
+    <target depends="init" name="build-project">
+        <echo message="${ant.project.name}: ${ant.file}"/>
+        <javac debug="true" debuglevel="${debuglevel}" destdir="build/classes" includeantruntime="false" source="${source}" target="${target}">
+            <src path="src"/>
+            <classpath refid="PracticaFinal_v4.classpath"/>
+        </javac>
+    </target>
+    <target description="Build all projects which reference this project. Useful to propagate changes." name="build-refprojects"/>
+    <target description="copy Eclipse compiler jars to ant lib directory" name="init-eclipse-compiler">
+        <copy todir="${ant.library.dir}">
+            <fileset dir="${ECLIPSE_HOME}/plugins" includes="org.eclipse.jdt.core_*.jar"/>
+        </copy>
+        <unzip dest="${ant.library.dir}">
+            <patternset includes="jdtCompilerAdapter.jar"/>
+            <fileset dir="${ECLIPSE_HOME}/plugins" includes="org.eclipse.jdt.core_*.jar"/>
+        </unzip>
+    </target>
+    <target description="compile project with Eclipse compiler" name="build-eclipse-compiler">
+        <property name="build.compiler" value="org.eclipse.jdt.core.JDTCompilerAdapter"/>
+        <antcall target="build"/>
+    </target>
+    <target name="Gestor">
+        <java classname="gestor.Gestor" failonerror="true" fork="yes">
+            <classpath refid="PracticaFinal_v4.classpath"/>
+        </java>
+    </target>
+    <target name="jar">
+        <jar destfile="${dir.jarfile}/Bully.jar">
+            <manifest>
+                <attribute name="Main-Class" value="org.eclipse.jdt.internal.jarinjarloader.JarRsrcLoader"/>
+                <attribute name="Rsrc-Main-Class" value="gestor.Gestor"/>
+                <attribute name="Class-Path" value="."/>
+                <attribute name="Rsrc-Class-Path" value="./ aopalliance-repackaged-2.6.1.jar gson-2.9.0.jar hk2-api-2.6.1.jar hk2-locator-2.6.1.jar hk2-utils-2.6.1.jar jakarta.activation-api-1.2.2.jar jakarta.annotation-api-1.3.5.jar jakarta.inject-2.6.1.jar jakarta.json-1.1.6-module.jar jakarta.json-1.1.6.jar jakarta.json-api-1.1.6.jar jakarta.json.bind-api-1.0.2.jar jakarta.persistence-api-2.2.3.jar jakarta.servlet-api-4.0.3.jar jakarta.validation-api-2.0.2.jar jakarta.ws.rs-api-2.1.6-sources.jar jakarta.ws.rs-api-2.1.6.jar jakarta.xml.bind-api-2.3.3.jar javassist-3.25.0-GA.jar jersey-client.jar jersey-common.jar jersey-container-servlet-core.jar jersey-container-servlet.jar jersey-hk2.jar jersey-media-jaxb.jar jersey-media-json-binding.jar jersey-media-sse.jar jersey-server.jar org.osgi.core-6.0.0.jar osgi-resource-locator-1.0.3.jar yasson-1.0.9.jar"/>
+            </manifest>
+            <zipfileset src="jar-in-jar-loader.zip"/>
+            <fileset dir="${dir.jarfile}/build/classes"/>
+            <zipfileset dir="${dir.jarfile}/WebContent/WEB-INF/lib" includes="aopalliance-repackaged-2.6.1.jar"/>
+            <zipfileset dir="${dir.jarfile}/WebContent/WEB-INF/lib" includes="gson-2.9.0.jar"/>
+            <zipfileset dir="${dir.jarfile}/WebContent/WEB-INF/lib" includes="hk2-api-2.6.1.jar"/>
+            <zipfileset dir="${dir.jarfile}/WebContent/WEB-INF/lib" includes="hk2-locator-2.6.1.jar"/>
+            <zipfileset dir="${dir.jarfile}/WebContent/WEB-INF/lib" includes="hk2-utils-2.6.1.jar"/>
+            <zipfileset dir="${dir.jarfile}/WebContent/WEB-INF/lib" includes="jakarta.activation-api-1.2.2.jar"/>
+            <zipfileset dir="${dir.jarfile}/WebContent/WEB-INF/lib" includes="jakarta.annotation-api-1.3.5.jar"/>
+            <zipfileset dir="${dir.jarfile}/WebContent/WEB-INF/lib" includes="jakarta.inject-2.6.1.jar"/>
+            <zipfileset dir="${dir.jarfile}/WebContent/WEB-INF/lib" includes="jakarta.json-1.1.6-module.jar"/>
+            <zipfileset dir="${dir.jarfile}/WebContent/WEB-INF/lib" includes="jakarta.json-1.1.6.jar"/>
+            <zipfileset dir="${dir.jarfile}/WebContent/WEB-INF/lib" includes="jakarta.json-api-1.1.6.jar"/>
+            <zipfileset dir="${dir.jarfile}/WebContent/WEB-INF/lib" includes="jakarta.json.bind-api-1.0.2.jar"/>
+            <zipfileset dir="${dir.jarfile}/WebContent/WEB-INF/lib" includes="jakarta.persistence-api-2.2.3.jar"/>
+            <zipfileset dir="${dir.jarfile}/WebContent/WEB-INF/lib" includes="jakarta.servlet-api-4.0.3.jar"/>
+            <zipfileset dir="${dir.jarfile}/WebContent/WEB-INF/lib" includes="jakarta.validation-api-2.0.2.jar"/>
+            <zipfileset dir="${dir.jarfile}/WebContent/WEB-INF/lib" includes="jakarta.ws.rs-api-2.1.6-sources.jar"/>
+            <zipfileset dir="${dir.jarfile}/WebContent/WEB-INF/lib" includes="jakarta.ws.rs-api-2.1.6.jar"/>
+            <zipfileset dir="${dir.jarfile}/WebContent/WEB-INF/lib" includes="jakarta.xml.bind-api-2.3.3.jar"/>
+            <zipfileset dir="${dir.jarfile}/WebContent/WEB-INF/lib" includes="javassist-3.25.0-GA.jar"/>
+            <zipfileset dir="${dir.jarfile}/WebContent/WEB-INF/lib" includes="jersey-client.jar"/>
+            <zipfileset dir="${dir.jarfile}/WebContent/WEB-INF/lib" includes="jersey-common.jar"/>
+            <zipfileset dir="${dir.jarfile}/WebContent/WEB-INF/lib" includes="jersey-container-servlet-core.jar"/>
+            <zipfileset dir="${dir.jarfile}/WebContent/WEB-INF/lib" includes="jersey-container-servlet.jar"/>
+            <zipfileset dir="${dir.jarfile}/WebContent/WEB-INF/lib" includes="jersey-hk2.jar"/>
+            <zipfileset dir="${dir.jarfile}/WebContent/WEB-INF/lib" includes="jersey-media-jaxb.jar"/>
+            <zipfileset dir="${dir.jarfile}/WebContent/WEB-INF/lib" includes="jersey-media-json-binding.jar"/>
+            <zipfileset dir="${dir.jarfile}/WebContent/WEB-INF/lib" includes="jersey-media-sse.jar"/>
+            <zipfileset dir="${dir.jarfile}/WebContent/WEB-INF/lib" includes="jersey-server.jar"/>
+            <zipfileset dir="${dir.jarfile}/WebContent/WEB-INF/lib" includes="org.osgi.core-6.0.0.jar"/>
+            <zipfileset dir="${dir.jarfile}/WebContent/WEB-INF/lib" includes="osgi-resource-locator-1.0.3.jar"/>
+            <zipfileset dir="${dir.jarfile}/WebContent/WEB-INF/lib" includes="yasson-1.0.9.jar"/>
+        </jar>
+    </target>
+    <target name="war" depends="init">
+    <war destfile="PracticaFinal_v4.war" 
+    	               webxml="WebContent/WEB-INF/web.xml">
+    	<classes dir="build/classes"/>
+    	<lib dir="${lib.dir}"/>
+      <manifest>
+        <attribute name="Main-Class" value="org.eclipse.jdt.internal.jarinjarloader.JarRsrcLoader"/>
+                <attribute name="Rsrc-Main-Class" value="proceso.Proceso"/>
+                <attribute name="Class-Path" value="."/>
+                <attribute name="Rsrc-Class-Path" value="./ aopalliance-repackaged-2.6.1.jar gson-2.9.0.jar hk2-api-2.6.1.jar hk2-locator-2.6.1.jar hk2-utils-2.6.1.jar jakarta.activation-api-1.2.2.jar jakarta.annotation-api-1.3.5.jar jakarta.inject-2.6.1.jar jakarta.json-1.1.6-module.jar jakarta.json-1.1.6.jar jakarta.json-api-1.1.6.jar jakarta.json.bind-api-1.0.2.jar jakarta.persistence-api-2.2.3.jar jakarta.servlet-api-4.0.3.jar jakarta.validation-api-2.0.2.jar jakarta.ws.rs-api-2.1.6-sources.jar jakarta.ws.rs-api-2.1.6.jar jakarta.xml.bind-api-2.3.3.jar javassist-3.25.0-GA.jar jersey-client.jar jersey-common.jar jersey-container-servlet-core.jar jersey-container-servlet.jar jersey-hk2.jar jersey-media-jaxb.jar jersey-media-json-binding.jar jersey-media-sse.jar jersey-server.jar org.osgi.core-6.0.0.jar osgi-resource-locator-1.0.3.jar yasson-1.0.9.jar"/>
+      </manifest>
+      <zipfileset src="jar-in-jar-loader.zip"/>
+            <fileset dir="${dir.jarfile}/build/classes"/>
+            <zipfileset dir="${dir.jarfile}/WebContent/WEB-INF/lib" includes="aopalliance-repackaged-2.6.1.jar"/>
+            <zipfileset dir="${dir.jarfile}/WebContent/WEB-INF/lib" includes="gson-2.9.0.jar"/>
+            <zipfileset dir="${dir.jarfile}/WebContent/WEB-INF/lib" includes="hk2-api-2.6.1.jar"/>
+            <zipfileset dir="${dir.jarfile}/WebContent/WEB-INF/lib" includes="hk2-locator-2.6.1.jar"/>
+            <zipfileset dir="${dir.jarfile}/WebContent/WEB-INF/lib" includes="hk2-utils-2.6.1.jar"/>
+            <zipfileset dir="${dir.jarfile}/WebContent/WEB-INF/lib" includes="jakarta.activation-api-1.2.2.jar"/>
+            <zipfileset dir="${dir.jarfile}/WebContent/WEB-INF/lib" includes="jakarta.annotation-api-1.3.5.jar"/>
+            <zipfileset dir="${dir.jarfile}/WebContent/WEB-INF/lib" includes="jakarta.inject-2.6.1.jar"/>
+            <zipfileset dir="${dir.jarfile}/WebContent/WEB-INF/lib" includes="jakarta.json-1.1.6-module.jar"/>
+            <zipfileset dir="${dir.jarfile}/WebContent/WEB-INF/lib" includes="jakarta.json-1.1.6.jar"/>
+            <zipfileset dir="${dir.jarfile}/WebContent/WEB-INF/lib" includes="jakarta.json-api-1.1.6.jar"/>
+            <zipfileset dir="${dir.jarfile}/WebContent/WEB-INF/lib" includes="jakarta.json.bind-api-1.0.2.jar"/>
+            <zipfileset dir="${dir.jarfile}/WebContent/WEB-INF/lib" includes="jakarta.persistence-api-2.2.3.jar"/>
+            <zipfileset dir="${dir.jarfile}/WebContent/WEB-INF/lib" includes="jakarta.servlet-api-4.0.3.jar"/>
+            <zipfileset dir="${dir.jarfile}/WebContent/WEB-INF/lib" includes="jakarta.validation-api-2.0.2.jar"/>
+            <zipfileset dir="${dir.jarfile}/WebContent/WEB-INF/lib" includes="jakarta.ws.rs-api-2.1.6-sources.jar"/>
+            <zipfileset dir="${dir.jarfile}/WebContent/WEB-INF/lib" includes="jakarta.ws.rs-api-2.1.6.jar"/>
+            <zipfileset dir="${dir.jarfile}/WebContent/WEB-INF/lib" includes="jakarta.xml.bind-api-2.3.3.jar"/>
+            <zipfileset dir="${dir.jarfile}/WebContent/WEB-INF/lib" includes="javassist-3.25.0-GA.jar"/>
+            <zipfileset dir="${dir.jarfile}/WebContent/WEB-INF/lib" includes="jersey-client.jar"/>
+            <zipfileset dir="${dir.jarfile}/WebContent/WEB-INF/lib" includes="jersey-common.jar"/>
+            <zipfileset dir="${dir.jarfile}/WebContent/WEB-INF/lib" includes="jersey-container-servlet-core.jar"/>
+            <zipfileset dir="${dir.jarfile}/WebContent/WEB-INF/lib" includes="jersey-container-servlet.jar"/>
+            <zipfileset dir="${dir.jarfile}/WebContent/WEB-INF/lib" includes="jersey-hk2.jar"/>
+            <zipfileset dir="${dir.jarfile}/WebContent/WEB-INF/lib" includes="jersey-media-jaxb.jar"/>
+            <zipfileset dir="${dir.jarfile}/WebContent/WEB-INF/lib" includes="jersey-media-json-binding.jar"/>
+            <zipfileset dir="${dir.jarfile}/WebContent/WEB-INF/lib" includes="jersey-media-sse.jar"/>
+            <zipfileset dir="${dir.jarfile}/WebContent/WEB-INF/lib" includes="jersey-server.jar"/>
+            <zipfileset dir="${dir.jarfile}/WebContent/WEB-INF/lib" includes="org.osgi.core-6.0.0.jar"/>
+            <zipfileset dir="${dir.jarfile}/WebContent/WEB-INF/lib" includes="osgi-resource-locator-1.0.3.jar"/>
+            <zipfileset dir="${dir.jarfile}/WebContent/WEB-INF/lib" includes="yasson-1.0.9.jar"/>
+    </war>
+  </target>
+</project>
