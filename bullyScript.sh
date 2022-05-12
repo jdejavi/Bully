@@ -21,8 +21,8 @@ mv tomcat8080/ Bully/
 mv tomcat8081/ Bully/
 
 echo "[!] Arrancando servidores en $(hostname -I)";echo
-./Bully/tomcat8080/bin/startup.sh
-./Bully/tomcat8081/bin/startup.sh
+./Bully/tomcat8080/bin/startup.sh &>/dev/null
+./Bully/tomcat8081/bin/startup.sh &>/dev/null
 echo "[!] Servidores descomprimidos y arrancados";echo
 
 echo "[!] Compilando clases del proyecto..."
