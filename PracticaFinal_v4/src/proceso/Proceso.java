@@ -37,7 +37,7 @@ import com.google.gson.Gson;
 public class Proceso {
     Boolean recibido=false;
     Boolean coordEnviado=false;
-    Client client = ClientBuilder.newClient().property(ClientProperties.CONNECT_TIMEOUT, 4000).property(ClientProperties.READ_TIMEOUT, 4000);
+    Client client = ClientBuilder.newClient();
     Map<Integer,String> mapaIds = new ConcurrentHashMap<Integer,String>();
     Integer id;
     Integer coordinadorActual;
@@ -77,7 +77,7 @@ public class Proceso {
     }
     
     //Timeout para detectar cuando ha fallado el coordinador
-    final Integer timeout = 4000;
+    final Integer timeout = 2000;
     
     public void run() {
         
@@ -224,12 +224,12 @@ public class Proceso {
                     }
                 }else {
                     try {
-                        Thread.sleep(timeout);
+                        Thread.sleep(timeout*2);
                         if(!tenemosCoordinador) {
                             this.convocarElecciones();
                         }
                         else {
-                        	estadoEleccion="Acuerdo";
+                        	//estadoEleccion="Acuerdo";
                         }
                     }catch(Exception e) {
                         
