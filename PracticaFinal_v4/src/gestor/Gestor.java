@@ -80,7 +80,7 @@ public class Gestor {
         			}catch(Exception e) {
         				e.printStackTrace();
         			}
-                break;
+                	break;
                 
                 case "2":
                 	System.out.println("\n¿Que proceso deseas parar? :");
@@ -95,12 +95,12 @@ public class Gestor {
 	    			}catch(Exception e) {
 	    				e.printStackTrace();
 	    			}
-            	break;
+            		break;
             	
                 case "3":
                 	comprobarEstado();
          
-                break;
+                	break;
                 case "4":
                 	
                 	try {
@@ -115,8 +115,8 @@ public class Gestor {
     	    				System.out.println(res);
     	    				Thread.sleep(1000);
                     	}
-                    	break;
                 	}catch(Exception e){}
+			break;
 		case "5":
 			System.out.print("\n¿Que proceso deseas inicializar (no arrancar)? :");
                 	proceso = sc.nextInt();
@@ -130,10 +130,8 @@ public class Gestor {
 				Response res = target.path("rest").path("proceso").path("init2")
 						.request("text/plain")
 						.post(Entity.text(json));
-			}catch(Exception e) {
-				
-			}
-                		
+			}catch(Exception e) {}
+                	break;
                 case "h":
                 	System.out.println(menuAyuda);
                 	break;
