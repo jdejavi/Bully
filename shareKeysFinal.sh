@@ -3,16 +3,15 @@
 if [ $# -eq 1 ]
 then
 	host=$1
-	find .ssh/ 2>/dev/null
+	find .ssh/ &>/dev/null
 	if [ $? -eq 1 ]
 	then
-		echo "[!] Creating folder..."
+		echo "[!] Creando la carpeta .ssh en el host $host"
 		mkdir .ssh
 	fi
 	cd ~/.ssh
 	ssh-keygen -b 4096 -t rsa &>/dev/null
-	clear
-	echo "[!] Copying the keys to the host..."
+	echo "[!] Copiando las claves en el host $host"
 	
 	ssh-copy-id $host &>/dev/null
 	ssh-add &>/dev/null
