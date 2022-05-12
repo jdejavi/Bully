@@ -102,20 +102,20 @@ public class Gestor {
          
                 	break;
                 case "4":
-                	
-                	try {
                 		for(Map.Entry<Integer, String> entry : mapa.entrySet()) {
-                			System.out.println("Arrancando proceso con id ->"+entry.getKey());
-                    		URI uri = UriBuilder.fromUri("http://"+entry.getValue()+"/PracticaFinal_v4").build();
-    	    				WebTarget target = client2.target(uri);
-    	    				System.out.printf(uri.toString());
-    	    				String res = target.path("rest").path("proceso").path("arrancar")
-    	    						.request()
-    	    						.get(String.class);
-    	    				System.out.println(res);
-    	    				Thread.sleep(1000);
-                    	}
-                	}catch(Exception e){}
+					try {
+						System.out.println("Arrancando proceso con id ->"+entry.getKey());
+					URI uri = UriBuilder.fromUri("http://"+entry.getValue()+"/PracticaFinal_v4").build();
+						WebTarget target = client2.target(uri);
+						System.out.printf(uri.toString());
+						String res = target.path("rest").path("proceso").path("arrancar")
+								.request()
+								.get(String.class);
+						System.out.println(res);
+						Thread.sleep(1000);
+					}catch(Exception e){}
+                    		}
+                	
 			break;
 		case "5":
 			System.out.print("\n¿Que proceso deseas inicializar (no arrancar)? :");
