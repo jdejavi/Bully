@@ -38,7 +38,7 @@ public class Gestor {
 	static Client client = ClientBuilder.newClient().property(ClientProperties.CONNECT_TIMEOUT, 100).property(ClientProperties.READ_TIMEOUT, 100);
 	static Client client2 = ClientBuilder.newClient();
 	static String menu = "\n\nEsto es todo lo que puedes hacer con los hilos:\n \t1 --> Arrancar\n \t2 --> Parar\n "
-				   + "\t3 --> Comprobar estado de los procesos\n \t4 --> Arrancar todos los procesos\n
+				   + "\t3 --> Comprobar estado de los procesos\n \t4 --> Arrancar todos los procesos\n "
 				   + "\t5 --> Inicializar\n\th --> Menu de ayuda\n \tq --> Salir";
 	static String menuAyuda = 
 	 "==================================================="
