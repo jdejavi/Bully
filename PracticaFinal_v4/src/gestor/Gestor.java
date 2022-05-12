@@ -47,6 +47,7 @@ public class Gestor {
     +"\nLa opcion 2 para el proceso seleccionado"
     +"\nLa opcion 3 comprueba el estado de cada proceso"
     +"\nLa opcion 4 arranca todos los procesos"
+    +"\nLa opcion 5 inicializa un proceso de un servidor que se ha caido previamente"
     +"\nLa opcion h despliega este menu.\n\n"
     +"\nLa opcion q te saca de la app.\n\n";
 	
@@ -115,6 +116,22 @@ public class Gestor {
                     	}
                     	break;
                 	}catch(Exception e){}
+		case "5":
+			System.out.print("\n¿Que proceso deseas inicializar (no arrancar)? :");
+                	proceso = sc.nextInt();
+			try {
+				InitDTO dto = new InitDTO(mapa, proceso);
+				String json = new Gson().toJson(dto);
+				
+				URI uri = UriBuilder.fromUri("http://"+mapa.get(proceso)+"/PracticaFinal_v4").build();
+				WebTarget target = client.target(uri);
+				System.out.printf(uri.toString());
+				Response res = target.path("rest").path("proceso").path("init2")
+						.request("text/plain")
+						.post(Entity.text(json));
+			}catch(Exception e) {
+				
+			}
                 		
                 case "h":
                 	System.out.println(menuAyuda);
