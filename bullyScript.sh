@@ -48,7 +48,7 @@ do
 	if [ "$host" = "q" ]
 	then
 		echo "[!] Saliendo..."
-		exit 1
+		break
 	else
 		echo "[!] Copiando el par de claves en el host $host"
 		./Bully/shareKeysFinal.sh $host
