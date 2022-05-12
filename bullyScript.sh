@@ -40,7 +40,7 @@ echo "[!] archivos war copiados satisfactoriamente";echo
 
 echo "--------------------------------------------"
 echo "Empezando la clonacion de claves en los host"
-echo "--------------------------------------------"
+echo "--------------------------------------------";echo
 while true
 do
 	echo "[!] Introduce el host (usuario@ip):"
