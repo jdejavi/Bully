@@ -185,7 +185,7 @@ public class Gestor {
 		
 	}
 	private static void comprobarEstado() {
-		Client clienteQuery = ClientBuilder.newClient().property(ClientProperties.CONNECT_TIMEOUT, 300).property(ClientProperties.READ_TIMEOUT, 300);
+		Client clienteQuery = ClientBuilder.newClient().property(ClientProperties.CONNECT_TIMEOUT, 1000).property(ClientProperties.READ_TIMEOUT, 1000);
 		try {
     		while (System.in.available() == 0) {
     			System.out.println("|                    URL                   |"
