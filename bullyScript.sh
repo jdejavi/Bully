@@ -64,5 +64,11 @@ do
 	fi
 	
 done
+clear
+echo "----------------------------------------------------------------"
+echo "|		Iniciando la practica final... (o no)  		|"
+echo "----------------------------------------------------------------"
+
+java -jar Bully/PracticaFinal_v4/Bully.jar Bully/PracticaFinal_v4/args.csv
 
 
