@@ -265,6 +265,7 @@ public class Proceso {
     @Produces(MediaType.TEXT_PLAIN)
     @Path("computar")
     public String computar() {
+	//Comprobar que somos el coordinador
         if(!estaEncendido) {
         
             return -1+"";
