@@ -271,14 +271,19 @@ public class Proceso {
             return -1+"";
         }
         else {
-            try {
-                Thread.sleep(new Random().nextInt(200)+100);
-                //return "1"
-                return 1+"";
-            } catch (InterruptedException e) {
-                e.printStackTrace();
-                return -1+"";
-            }
+		if(coordinadorActual != id){
+			try {
+				Thread.sleep(new Random().nextInt(200)+100);
+				//return "1"
+				return 1+"";
+			    } catch (InterruptedException e) {
+				e.printStackTrace();
+				return -1+"";
+			    }
+		} else{
+			return -1+"";
+		}
+            
         }
     }
     
