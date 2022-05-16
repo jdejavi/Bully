@@ -230,7 +230,7 @@ public class Proceso {
                             this.convocarElecciones();
                         }
                         else {
-                        	//estadoEleccion="Acuerdo";
+                        	estadoEleccion="Acuerdo";
                         }
                     }catch(Exception e) {
                         
