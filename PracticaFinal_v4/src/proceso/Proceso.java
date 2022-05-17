@@ -35,9 +35,10 @@ import com.google.gson.Gson;
 @Singleton
 @Path("proceso")
 public class Proceso {
+	final Integer timeout = 6000;
     Boolean recibido=false;
     Boolean coordEnviado=false;
-    Client client = ClientBuilder.newClient().property(ClientProperties.CONNECT_TIMEOUT, 4000).property(ClientProperties.READ_TIMEOUT, 4000);
+    Client client = ClientBuilder.newClient().property(ClientProperties.CONNECT_TIMEOUT, timeout).property(ClientProperties.READ_TIMEOUT, timeout);;
     Map<Integer,String> mapaIds = new ConcurrentHashMap<Integer,String>();
     Integer id;
     Integer coordinadorActual;
@@ -77,7 +78,7 @@ public class Proceso {
     }
     
     //Timeout para detectar cuando ha fallado el coordinador
-    final Integer timeout = 4000;
+    
     
     public void run() {
         
@@ -97,9 +98,9 @@ public class Proceso {
                 }
                 
             }else {
-                try {
+            	try {
                     Thread.sleep(new Random().nextInt(500)+500);
-                    if(estaEncendido) {
+                    if(estaEncendido && estadoEleccion.equalsIgnoreCase("Acuerdo")) {
                     	//Llamada al coordinador
                         URI uri = UriBuilder.fromUri("http://"+mapaIds.get(coordinadorActual)+"/PracticaFinal_v4").build();
                         WebTarget target = client.target(uri);
@@ -224,7 +225,7 @@ public class Proceso {
                     }
                 }else {
                     try {
-                        Thread.sleep(timeout);
+                        Thread.sleep(timeout*2);
                         if(!tenemosCoordinador) {
                             this.convocarElecciones();
                         }
@@ -270,13 +271,17 @@ public class Proceso {
             return -1+"";
         }
         else {
-            try {
-                Thread.sleep(new Random().nextInt(200)+100);
-                //return "1"
-                return 1+"";
-            } catch (InterruptedException e) {
-                e.printStackTrace();
-                return -1+"";
+            if(coordinadorActual == id) {
+            	try {
+                    Thread.sleep(new Random().nextInt(200)+100);
+                    //return "1"
+                    return 1+"";
+                } catch (InterruptedException e) {
+                    e.printStackTrace();
+                    return -1+"";
+                }
+            } else {
+            	return -1+"";
             }
         }
     }

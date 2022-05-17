@@ -6,6 +6,7 @@
 #		- Javier Matilla Martin					#
 #		- Oscar Vicente Vicente					#
 #########################################################################
+clear
 echo "----------------------------------------------"
 echo "[!] Iniciando la ejecucion del script final..."
 echo "----------------------------------------------"
@@ -14,6 +15,9 @@ echo;echo;echo;
 
 echo "[!] Clonando el repositorio de la práctica...";echo
 git clone https://github.com/jdejavi/Bully &>/dev/null
+cd Bully/
+git checkout oscar
+cd ..
 chmod +x Bully/*.sh
 echo "[!] Descomprimiendo servidores..."
 tar -xvzf Bully/tomcats.tar.gz &>/dev/null
